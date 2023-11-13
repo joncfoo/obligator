@@ -75,11 +75,11 @@ func buildCookieDomain(fullUrl string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	hostParts := strings.Split(rootUrlParsed.Host, ".")
+	hostParts := strings.Split(rootUrlParsed.Hostname(), ".")
 
 	if len(hostParts) < 3 {
 		// apex domain
-		return rootUrlParsed.Host, nil
+		return rootUrlParsed.Hostname(), nil
 	} else {
 		cookieDomain := strings.Join(hostParts[1:], ".")
 		return cookieDomain, nil
